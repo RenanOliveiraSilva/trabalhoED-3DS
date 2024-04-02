@@ -1,7 +1,8 @@
+let alunos = [];
+
 //Função para entrada de dados de alunos
 function cadastraUser() {
 
-    let alunos = [];
 
     let nome = prompt("Digite o nome do aluno: ");
     let ra = prompt("Digite o RA desse aluno: ");
