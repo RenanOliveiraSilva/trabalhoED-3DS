@@ -20,12 +20,7 @@ function cadastraUser() {
 
     }
 
-
-    for (const value in alunoObj) {
-        
-    }
-    alunos = [ ...alunoObj ];
-
+    alunos.push(alunoObj);
     console.log(alunos);
 
     }
