@@ -1,8 +1,10 @@
 let alunos = [];
+let qtd = 0;
 
 //Função Menu
 function menu() {
     let opcao;
+
     do {
         opcao = parseInt(prompt("Selecione uma opção:\n1. Cadastrar aluno\n2. Relatório de alunos em ordem crescente por NOME\n3. Relatório de alunos em ordem decrescente por RA\n4. Relatório de Alunos em ordem crescente por Nome, apenas dos Aprovados\n5. Sair"));
 
@@ -32,8 +34,13 @@ function menu() {
 //Função para entrada de dados de alunos
 function cadastraUser() {
 
-    let continuar = 0
+    let continuar = 0;
+
     do{
+        if(qtd === 30) {
+            alert("Quantidade máxima de alunos na turma (30) ");
+            return;
+        }
 
         let nome = prompt("Digite o nome do aluno: ");
         let ra = prompt("Digite o RA desse aluno: ");
@@ -55,8 +62,9 @@ function cadastraUser() {
         alunos.push(alunoObj);
         console.log(alunos);
 
-        continuar = parseInt(prompt("Deseja cadastar outro aluno? (0 = sim; 1 = não): "))
-        console.log(continuar)
+        continuar = parseInt(prompt("Deseja cadastar outro aluno? (0 = sim; 1 = não): "));
+        qtd ++;
+
     }while(continuar != 1)
 
     return
