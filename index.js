@@ -1,9 +1,10 @@
 let alunos = [];
 
+//Função Menu
 function menu() {
     let opcao;
     do {
-        opcao = parseInt(prompt("Selecione uma opção:\n1. Cadastrar aluno\n2. Listar alunos\n3. Buscar aluno\n4. Remover aluno\n5. Sair"));
+        opcao = parseInt(prompt("Selecione uma opção:\n1. Cadastrar aluno\n2. Relatório de alunos em ordem crescente por NOME\n3. Relatório de alunos em ordem decrescente por RA\n4. Relatório de Alunos em ordem crescente por Nome, apenas dos Aprovados\n5. Sair"));
 
         switch (opcao) {
             case 1:
