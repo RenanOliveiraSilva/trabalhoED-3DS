@@ -1,4 +1,7 @@
+//Criando uma lista de alunos vázia
 let alunos = [];
+
+//Criando um co ntador de alunos
 let qtd = 0;
 
 //Função Menu
@@ -13,7 +16,8 @@ function menu() {
                 cadastraUser();
                 break;
             case 2:
-                listarAlunos();
+
+                mostraResposta(alunos);
                 break;
             case 3:
                 buscarAluno();
@@ -33,15 +37,13 @@ function menu() {
 
 //Função para entrada de dados de alunos
 function cadastraUser() {
-
-    let continuar = 0;
-
-    do{
+        //Verificando se o máximo de alunos foi excedido
         if(qtd === 30) {
             alert("Quantidade máxima de alunos na turma (30) ");
             return;
         }
 
+        //Entrada de dados de um aluno
         let nome = prompt("Digite o nome do aluno: ");
         let ra = prompt("Digite o RA desse aluno: ");
         let idade = prompt("Digite a idade desse aluno: ");
@@ -49,6 +51,7 @@ function cadastraUser() {
         let media = prompt("Digite a média desse aluno: ");
         let resultado = prompt("Digite se o aluno é aprovado ou reprovado: ");
 
+        //Criando um objeto de aluno com as informações cadastradas
         let alunoObj = {
             nome,
             ra,
@@ -59,14 +62,31 @@ function cadastraUser() {
 
         }
 
+        //Inserindo o objeto criado no array de alunos
         alunos.push(alunoObj);
-        console.log(alunos);
 
-        continuar = parseInt(prompt("Deseja cadastar outro aluno? (0 = sim; 1 = não): "));
+        //Incrementando o contador de alunos
         qtd ++;
 
-    }while(continuar != 1)
-
+    //Encerrando a função
     return
 }
 
+//Função de mostrar os resultados
+function mostraResposta(array) {
+    
+    // console.log(array.lenght);
+    const resultado = document.querySelector('#resposta');  
+    resultado.innerHTML = '';   
+    
+    
+    array.forEach(element => {
+        const p = document.createElement('p');
+        p.innerHTML += `Aluno: ${element.nome} `;
+        p.innerHTML += `${element.idade} anos `;
+        p.innerHTML += `do sexo ${element.sexo}`;
+        
+        resultado.appendChild(p);
+    });
+  
+  }
