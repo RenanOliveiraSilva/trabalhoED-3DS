@@ -16,8 +16,8 @@ function menu() {
                 cadastraUser();
                 break;
             case 2:
-
-                mostraResposta(alunos);
+                //mostraResposta(ordenaAprovados());
+                console.log(ordenaAprovados());
                 break;
             case 3:
                 buscarAluno();
@@ -79,15 +79,41 @@ function ordenaNome(){
 
 function ordenaAprovados() {
     if (!alunos) {
-        alert("TESTE");
-
+        alert("Nenhum aluno cadastrado !!!");
+        
         return
-    };
+    }
+    
+        function bubbleSort(vetor, fnComp) {
+            let trocou;
+            
+            do {
+               
+                trocou = false;
+            
+                for (let i = 0; i < vetor.length - 1; i++) {
+                    
+                    if (fnComp(vetor[i], vetor[i + 1])) {
+                        [vetor[i], vetor[i + 1]] = [vetor[i + 1], vetor[i]];
+                        trocou = true;
+                        
+                    }
+                }
 
+            } while (trocou);
+    
+            
+        }
 
+        
+        return bubbleSort(alunos, ordenaNome);
+        
+    }
 
-}
-
+    function ordenaNomes(a,b) {
+        return a.nome > b.nome
+    }
+    
 
 //Função de mostrar os resultados
 function mostraResposta(array) {
