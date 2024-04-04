@@ -16,10 +16,8 @@ function menu() {
                 cadastraUser();
                 break;
             case 2:
-                //mostraResposta(ordenaAprovados());
-                console.log(ordenaAprovados());
-                // ordenaNome(alunos);
                 mostraResposta(ordenaNome(alunos));
+
                 break;
             case 3:
                 buscarAluno();
@@ -74,63 +72,47 @@ function cadastraUser() {
     return
 }
 
+//Retornando a lista de alunos por nome crescente
 function ordenaNome(vetor){
-    //Ordenar alunos por ordem alfabética
-    let trocou
-
-    do {
-        trocou = false
-
-        // Percurso FOR tradicional até a PENÚLTIMA posição do vetor
-        for(let i = 0; i < vetor.length - 1; i++) {
-            if(vetor[i] > vetor[i + 1]) {
-                // Efetua a troca entre os elementos por desestruturação
-                [ vetor[i], vetor[i + 1] ] = [ vetor[i + 1], vetor[i] ]
-                trocou = true
-            }
-        }
-
-    } while(trocou)
-    
-    return vetor;
-}
-
-function ordenaAprovados() {
+    //Verificando se a lista de alunos não está vazia
     if (!alunos) {
         alert("Nenhum aluno cadastrado !!!");
         
         return
     }
-    
-        function bubbleSort(vetor, fnComp) {
-            let trocou;
-            
-            do {
-               
-                trocou = false;
-            
-                for (let i = 0; i < vetor.length - 1; i++) {
+
+    //Ordenando os nomes em ordem crecente
+    function bubbleSort(vetor, fnComp) {
+        let trocou;
+        
+        do {
+           
+            trocou = false;
+        
+            for (let i = 0; i < vetor.length - 1; i++) {
+                
+                if (fnComp(vetor[i], vetor[i + 1])) {
+                    [vetor[i], vetor[i + 1]] = [vetor[i + 1], vetor[i]];
+                    trocou = true;
                     
-                    if (fnComp(vetor[i], vetor[i + 1])) {
-                        [vetor[i], vetor[i + 1]] = [vetor[i + 1], vetor[i]];
-                        trocou = true;
-                        
-                    }
                 }
+            }
 
-            } while (trocou);
+        } while (trocou);
+
+        return vetor;
+    }
+
+    //Retornando o valor
+    return bubbleSort(alunos, ordenaNomes);
     
-            
-        }
+}
 
-        
-        return bubbleSort(alunos, ordenaNome);
-        
-    }
 
-    function ordenaNomes(a,b) {
-        return a.nome > b.nome
-    }
+//Função de comparação de nomes
+function ordenaNomes(a,b) {
+    return a.nome > b.nome
+}
     
 
 //Função de mostrar os resultados
