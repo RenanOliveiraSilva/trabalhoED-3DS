@@ -72,6 +72,18 @@ function cadastraUser() {
     return
 }
 
+function ordenaAprovados() {
+    if (!alunos) {
+        alert("TESTE");
+
+        return
+    };
+
+
+
+}
+
+
 //Função de mostrar os resultados
 function mostraResposta(array) {
     
