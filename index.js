@@ -18,6 +18,8 @@ function menu() {
             case 2:
                 //mostraResposta(ordenaAprovados());
                 console.log(ordenaAprovados());
+                // ordenaNome(alunos);
+                mostraResposta(ordenaNome(alunos));
                 break;
             case 3:
                 buscarAluno();
@@ -72,10 +74,26 @@ function cadastraUser() {
     return
 }
 
-function ordenaNome(){
+function ordenaNome(vetor){
     //Ordenar alunos por ordem alfabética
-}
+    let trocou
 
+    do {
+        trocou = false
+
+        // Percurso FOR tradicional até a PENÚLTIMA posição do vetor
+        for(let i = 0; i < vetor.length - 1; i++) {
+            if(vetor[i] > vetor[i + 1]) {
+                // Efetua a troca entre os elementos por desestruturação
+                [ vetor[i], vetor[i + 1] ] = [ vetor[i + 1], vetor[i] ]
+                trocou = true
+            }
+        }
+
+    } while(trocou)
+    
+    return vetor;
+}
 
 function ordenaAprovados() {
     if (!alunos) {
