@@ -72,21 +72,3 @@ function cadastraUser() {
     return
 }
 
-//Função de mostrar os resultados
-function mostraResposta(array) {
-    
-    // console.log(array.lenght);
-    const resultado = document.querySelector('#resposta');  
-    resultado.innerHTML = '';   
-    
-    
-    array.forEach(element => {
-        const p = document.createElement('p');
-        p.innerHTML += `Aluno: ${element.nome} `;
-        p.innerHTML += `${element.idade} anos `;
-        p.innerHTML += `do sexo ${element.sexo}`;
-        
-        resultado.appendChild(p);
-    });
-  
-  }
