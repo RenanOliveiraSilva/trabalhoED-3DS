@@ -73,9 +73,9 @@ function cadastraUser() {
 }
 
 //Retornando a lista de alunos por nome crescente
-function ordenaNome(vetor){
+function ordenaNome(array){
     //Verificando se a lista de alunos não está vazia
-    if (!alunos) {
+    if (!array) {
         alert("Nenhum aluno cadastrado !!!");
         
         return
@@ -104,16 +104,27 @@ function ordenaNome(vetor){
     }
 
     //Retornando o valor
-    return bubbleSort(alunos, ordenaNomes);
+    return bubbleSort(array, ordenaNomes);
     
 }
 
+
+function ordenaAprovados() {
+    let alunosAp = selecionaAlunosAp();
+}
+
+
+//Função que seleciona os alunos aprovados
+function selecionaAlunosAp() {
+    
+}
 
 //Função de comparação de nomes
 function ordenaNomes(a,b) {
     return a.nome > b.nome
 }
     
+
 
 //Função de mostrar os resultados
 function mostraResposta(array) {
