@@ -15,19 +15,22 @@ function menu() {
             case 1:
                 cadastraUser();
                 break;
-            case 2:
-                mostraResposta(arrayDeExemplo);
-                // mostraResposta(ordenaNome(alunos));
 
-                break;
+            case 2:
+                mostraResposta(ordenaNome(alunos));
+                opcao = 5;
+            break;
+                
             case 3:
                 mostraResposta(ordenaRA(alunos));
-                break;
-            case 4:
-                console.log("passei aq")
-                selecionaAlunosAp(alunos);
+                opcao = 5;
+            break;
 
+            case 4:
+                mostraResposta(selecionaAlunosAp(alunos));
+                opcao = 5;
                 break;
+
             case 5:
                 console.log("Programa encerrado.");
                 break;
@@ -38,7 +41,7 @@ function menu() {
     } while (opcao !== 5);
 }
 
-//Função para entrada de dados de alunos
+//1 - Função para entrada de dados de alunos
 function cadastraUser() {
         //Verificando se o máximo de alunos foi excedido
         if(qtd === 30) {
@@ -75,7 +78,7 @@ function cadastraUser() {
     return
 }
 
-//Retornando a lista de alunos por nome crescente
+//2 - Retornando a lista de alunos por nome crescente
 function ordenaNome(array){
     //Verificando se a lista de alunos não está vazia
     if (!array) {
@@ -111,11 +114,12 @@ function ordenaNome(array){
     
 }
 
-//Função de comparação de nomes
+//2.1 - Função de comparação de nomes
 function ordenaNomes(a,b) {
     return a.nome > b.nome
 }
 
+//3 - Fynção que retorna lista ordenada por RA decrescente
 function ordenaRA(array){
     //Verificando se a lista de alunos não está vazia
     if (!array) {
@@ -150,23 +154,49 @@ function ordenaRA(array){
     return bubbleSort(array, ordenaRAdecrescente);
 }
 
-//Função de comparação de RA
+//3.1 - Função de comparação de RA
 function ordenaRAdecrescente(a,b) {
     return a.ra < b.ra
 }
 
-function ordenaAprovados() {
-    let alunosAp = selecionaAlunosAp();
+//4 - Função que retorna uma lista de alunos aprovados por ordem crescente de nomes
+function ordenaAprovados(array) {
+    let alunosAp = selecionaAlunosAp(array);
+
+        //Ordenando os nomes em ordem crecente
+        function bubbleSort(vetor, fnComp) {
+            let trocou;
+            
+            do {
+               
+                trocou = false;
+            
+                for (let i = 0; i < vetor.length - 1; i++) {
+                    
+                    if (fnComp(vetor[i], vetor[i + 1])) {
+                        [vetor[i], vetor[i + 1]] = [vetor[i + 1], vetor[i]];
+                        trocou = true;
+                        
+                    }
+                }
+    
+            } while (trocou);
+    
+            return vetor;
+        }
+    
+        //Retornando o valor
+        return bubbleSort(alunosAp, ordenaNomes);
+    
 }
 
 
-//Função que seleciona os alunos aprovados
+//4.1 - Função que seleciona os alunos aprovados
 function selecionaAlunosAp(obj) {
     let alunosAp = [];
 
     for(let i = 0; i < obj.length; i++) {
 
-        console.log("aluno "+ obj[i].resultado);
         if (obj[i].resultado == 1) {
             alunosAp.push(obj[i]);
 
@@ -174,13 +204,9 @@ function selecionaAlunosAp(obj) {
 
     }
 
-    console.log(alunosAp);
+    return alunosAp;
 
 }
-
-
-    
-
 
 //Função de mostrar os resultados
 function mostraResposta(array) {
@@ -202,27 +228,29 @@ function mostraResposta(array) {
         
         resultado.appendChild(p);
     });
+
+
   
   }
 
-  // Função para exibir os relatórios
-function exibirRelatorio(titulo, resultados) {
-    const tituloRelatorio = document.getElementById('tituloRelatorio');
-    tituloRelatorio.innerText = titulo;
+//   // Função para exibir os relatórios
+// function exibirRelatorio(titulo, resultados) {
+//     const tituloRelatorio = document.getElementById('tituloRelatorio');
+//     tituloRelatorio.innerText = titulo;
 
-    const respostaCard = document.getElementById('resposta');
-    respostaCard.innerHTML = '';
+//     const respostaCard = document.getElementById('resposta');
+//     respostaCard.innerHTML = '';
 
-    resultados.forEach(resultado => {
-        const p = document.createElement('p');
-        p.innerHTML = resultado;
-        respostaCard.appendChild(p);
-    });
+//     resultados.forEach(resultado => {
+//         const p = document.createElement('p');
+//         p.innerHTML = resultado;
+//         respostaCard.appendChild(p);
+//     });
 
-    document.getElementById('cardRelatorio').style.display = 'block';
-}
-const arrayDeExemplo = [
-    { nome: 'Exemplo1', idade: 20, sexo: 'Masculino', ra: '12345' },
-    { nome: 'Exemplo2', idade: 25, sexo: 'Feminino', ra: '67890' }
-];
-mostraResposta(arrayDeExemplo);
+//     document.getElementById('cardRelatorio').style.display = 'block';
+// }
+// const arrayDeExemplo = [
+//     { nome: 'Exemplo1', idade: 20, sexo: 'Masculino', ra: '12345' },
+//     { nome: 'Exemplo2', idade: 25, sexo: 'Feminino', ra: '67890' }
+// ];
+// mostraResposta(arrayDeExemplo);
