@@ -16,11 +16,12 @@ function menu() {
                 cadastraUser();
                 break;
             case 2:
-                mostraResposta(ordenaNome(alunos));
+                mostraResposta(arrayDeExemplo);
+                // mostraResposta(ordenaNome(alunos));
 
                 break;
             case 3:
-                buscarAluno();
+                mostraResposta(ordenaRA(alunos));
                 break;
             case 4:
                 console.log("passei aq")
@@ -110,6 +111,49 @@ function ordenaNome(array){
     
 }
 
+//Função de comparação de nomes
+function ordenaNomes(a,b) {
+    return a.nome > b.nome
+}
+
+function ordenaRA(array){
+    //Verificando se a lista de alunos não está vazia
+    if (!array) {
+        alert("Nenhum aluno cadastrado !!!");
+        
+        return
+    }
+
+    //Ordenando os alunos pelo RA em ordem decrescente
+    function bubbleSort(vetor, fnComp) {
+        let trocou;
+        
+        do {
+           
+            trocou = false;
+        
+            for (let i = 0; i < vetor.length - 1; i++) {
+                
+                if (fnComp(vetor[i], vetor[i + 1])) {
+                    [vetor[i], vetor[i + 1]] = [vetor[i + 1], vetor[i]];
+                    trocou = true;
+                    
+                }
+            }
+
+        } while (trocou);
+
+        return vetor;
+    }
+
+    //Retornando o valor
+    return bubbleSort(array, ordenaRAdecrescente);
+}
+
+//Função de comparação de RA
+function ordenaRAdecrescente(a,b) {
+    return a.ra < b.ra
+}
 
 function ordenaAprovados() {
     let alunosAp = selecionaAlunosAp();
@@ -134,10 +178,7 @@ function selecionaAlunosAp(obj) {
 
 }
 
-//Função de comparação de nomes
-function ordenaNomes(a,b) {
-    return a.nome > b.nome
-}
+
     
 
 
@@ -148,14 +189,40 @@ function mostraResposta(array) {
     const resultado = document.querySelector('#resposta');  
     resultado.innerHTML = '';   
     
+    const cardRelatorio = document.getElementById('resposta');
+    // Limpa qualquer conteúdo anterior no card de respostas
+    cardRelatorio.innerHTML = '';
     
     array.forEach(element => {
         const p = document.createElement('p');
-        p.innerHTML += `Aluno: ${element.nome} `;
-        p.innerHTML += `${element.idade} anos `;
-        p.innerHTML += `do sexo ${element.sexo}`;
+        p.innerHTML += `Aluno: ${element.nome}; `;
+        p.innerHTML += `${element.idade} anos; `;
+        p.innerHTML += `do sexo ${element.sexo}; `;
+        p.innerHTML += `RA: ${element.ra}`;
         
         resultado.appendChild(p);
     });
   
   }
+
+  // Função para exibir os relatórios
+function exibirRelatorio(titulo, resultados) {
+    const tituloRelatorio = document.getElementById('tituloRelatorio');
+    tituloRelatorio.innerText = titulo;
+
+    const respostaCard = document.getElementById('resposta');
+    respostaCard.innerHTML = '';
+
+    resultados.forEach(resultado => {
+        const p = document.createElement('p');
+        p.innerHTML = resultado;
+        respostaCard.appendChild(p);
+    });
+
+    document.getElementById('cardRelatorio').style.display = 'block';
+}
+const arrayDeExemplo = [
+    { nome: 'Exemplo1', idade: 20, sexo: 'Masculino', ra: '12345' },
+    { nome: 'Exemplo2', idade: 25, sexo: 'Feminino', ra: '67890' }
+];
+mostraResposta(arrayDeExemplo);
