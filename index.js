@@ -23,7 +23,9 @@ function menu() {
                 buscarAluno();
                 break;
             case 4:
-                removerAluno();
+                console.log("passei aq")
+                selecionaAlunosAp(alunos);
+
                 break;
             case 5:
                 console.log("Programa encerrado.");
@@ -49,7 +51,7 @@ function cadastraUser() {
         let idade = prompt("Digite a idade desse aluno: ");
         let sexo = prompt("Digite o sexo desse aluno: ");
         let media = prompt("Digite a média desse aluno: ");
-        let resultado = prompt("Digite se o aluno é aprovado ou reprovado: ");
+        let resultado = prompt("Digite se o aluno é 1 - aprovado ou 0 - reprovado: ");
 
         //Criando um objeto de aluno com as informações cadastradas
         let alunoObj = {
@@ -115,8 +117,21 @@ function ordenaAprovados() {
 
 
 //Função que seleciona os alunos aprovados
-function selecionaAlunosAp() {
-    
+function selecionaAlunosAp(obj) {
+    let alunosAp = [];
+
+    for(let i = 0; i < obj.length; i++) {
+
+        console.log("aluno "+ obj[i].resultado);
+        if (obj[i].resultado == 1) {
+            alunosAp.push(obj[i]);
+
+        }
+
+    }
+
+    console.log(alunosAp);
+
 }
 
 //Função de comparação de nomes
