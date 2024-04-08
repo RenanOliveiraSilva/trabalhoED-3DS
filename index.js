@@ -215,10 +215,6 @@ function mostraResposta(array) {
     const resultado = document.querySelector('#resposta');  
     resultado.innerHTML = '';   
     
-    const cardRelatorio = document.getElementById('resposta');
-    // Limpa qualquer conteúdo anterior no card de respostas
-    cardRelatorio.innerHTML = '';
-    
     array.forEach(element => {
         const p = document.createElement('p');
         p.innerHTML += `Aluno: ${element.nome}; `;
