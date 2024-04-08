@@ -228,25 +228,3 @@ function mostraResposta(array) {
 
   
   }
-
-//   // Função para exibir os relatórios
-// function exibirRelatorio(titulo, resultados) {
-//     const tituloRelatorio = document.getElementById('tituloRelatorio');
-//     tituloRelatorio.innerText = titulo;
-
-//     const respostaCard = document.getElementById('resposta');
-//     respostaCard.innerHTML = '';
-
-//     resultados.forEach(resultado => {
-//         const p = document.createElement('p');
-//         p.innerHTML = resultado;
-//         respostaCard.appendChild(p);
-//     });
-
-//     document.getElementById('cardRelatorio').style.display = 'block';
-// }
-// const arrayDeExemplo = [
-//     { nome: 'Exemplo1', idade: 20, sexo: 'Masculino', ra: '12345' },
-//     { nome: 'Exemplo2', idade: 25, sexo: 'Feminino', ra: '67890' }
-// ];
-// mostraResposta(arrayDeExemplo);
