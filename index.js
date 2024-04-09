@@ -1,7 +1,7 @@
 //Criando uma lista de alunos vázia
 let alunos = [];
 
-//Criando um co ntador de alunos
+//Criando um contador de alunos
 let qtd = 0;
 
 //Função Menu
@@ -17,17 +17,17 @@ function menu() {
                 break;
 
             case 2:
-                mostraResposta(ordenaNome(alunos), "Alunos em ordem crescente");
+                mostraResposta(ordenaNome(alunos), "Alunos em ordem alfabética");
                 opcao = 5;
             break;
                 
             case 3:
-                mostraResposta(ordenaRA(alunos), "Alunos em ordem crescente de RA");
+                mostraResposta(ordenaRA(alunos), "Alunos em ordem decrescente por RA");
                 opcao = 5;
             break;
 
             case 4:
-                mostraResposta(selecionaAlunosAp(alunos), "Alunos aprovados em ordem crescente");
+                mostraResposta(ordenaAprovados(alunos), "Alunos aprovados em ordem alfabética");
                 opcao = 5;
                 break;
 
@@ -44,8 +44,8 @@ function menu() {
 //1 - Função para entrada de dados de alunos
 function cadastraUser() {
         //Verificando se o máximo de alunos foi excedido
-        if(qtd === 30) {
-            alert("Quantidade máxima de alunos na turma (30) ");
+        if(qtd === 10) {
+            alert("Quantidade máxima de alunos na turma (10) ");
             return;
         }
 
@@ -160,28 +160,70 @@ function ordenaRAdecrescente(a,b) {
     return a.ra < b.ra
 }
 
- 
+//4 - Função que retorna uma lista de alunos aprovados por ordem crescente de nomes
+function ordenaAprovados(array) {
+    if (!array) {
+        alert("Nenhum aluno cadastrado !!!");
+        
+        return;
+    }
+
+    let alunosAp = selecionaAlunosAp(array);
+    console.log(alunosAp);
+
+        //Ordenando os nomes em ordem crecente
+        function bubbleSort(vetor, fnComp) {
+            let trocou;
+            
+            do {
+               
+                trocou = false;
+            
+                for (let i = 0; i < vetor.length - 1; i++) {
+                    
+                    if (fnComp(vetor[i], vetor[i + 1])) {
+                        [vetor[i], vetor[i + 1]] = [vetor[i + 1], vetor[i]];
+                        trocou = true;
+                        
+                    }
+                }
+    
+            } while (trocou);
+    
+            return vetor;
+        }
+    
+        //Retornando o valor
+        return bubbleSort(alunosAp, ordenaNomes);
+    
+}
 
 //4.1 - Função que seleciona os alunos aprovados
 function selecionaAlunosAp(obj) {
-    
+    let teste = [];
 
     for(let i = 0; i < obj.length; i++) {
 
         if (obj[i].resultado == 1) {
-            alunosAp.push(obj[i]);
+            teste.push(obj[i]);
 
         }
 
     }
 
 
-    return alunosAp;
+    return teste;
 
 }
 
 //Função de mostrar os resultados
 function mostraResposta(array, nomeFunc) {
+
+    if (alunos.length == 0) {
+        alert("Nenhum aluno cadastrado !!!");
+        
+        return;
+    }
     
     //Selecionando campos do arquivo HTML
     const tbody = document.querySelector('#text');  
