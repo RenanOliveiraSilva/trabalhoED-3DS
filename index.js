@@ -215,6 +215,7 @@ function mostraResposta(array) {
     // resultado.innerHTML = '';   
     
     const tbody = document.querySelector('#text');  
+    tbody.innerHTML = "";
     
     array.forEach(obj => {
         const tr = document.createElement('tr');  
