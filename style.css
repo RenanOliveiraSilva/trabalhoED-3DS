@@ -97,3 +97,17 @@ p {
 h3 {
   margin: 2px;
 }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 10px;
+}
+
+th {
+  background-color: #6f237b;
+  color: #fff;
+}
