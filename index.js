@@ -211,19 +211,61 @@ function selecionaAlunosAp(obj) {
 //Função de mostrar os resultados
 function mostraResposta(array) {
     
-    // console.log(array.lenght);
-    const resultado = document.querySelector('#resposta');  
-    resultado.innerHTML = '';   
+    // const resultado = document.querySelector('#resposta');  
+    // resultado.innerHTML = '';   
     
-    array.forEach(element => {
-        const p = document.createElement('p');
-        p.innerHTML += `Aluno: ${element.nome}; `;
-        p.innerHTML += `${element.idade} anos; `;
-        p.innerHTML += `do sexo ${element.sexo}; `;
-        p.innerHTML += `RA: ${element.ra}`;
+    const tbody = document.querySelector('#text');  
+    
+    array.forEach(obj => {
+        const tr = document.createElement('tr');  
+
+            const td1 = document.createElement('td');
+            const td2 = document.createElement('td');
+            const td3 = document.createElement('td');
+            const td4 = document.createElement('td');
+            const td5 = document.createElement('td');
+            const td6 = document.createElement('td');
+
+            const p1 = document.createElement('p');
+            const p2 = document.createElement('p');
+            const p3 = document.createElement('p');
+            const p4 = document.createElement('p');
+            const p5 = document.createElement('p');
+            const p6 = document.createElement('p');
+
+            p1.innerText = obj.nome;
+            p2.innerText = obj.ra;
+            p3.innerText = obj.idade;
+            p4.innerText = obj.sexo;
+            p5.innerText = obj.media;
+            p6.innerText = obj.resultado;
+
+            td1.appendChild(p1);
+            td2.appendChild(p2);
+            td3.appendChild(p3);
+            td4.appendChild(p4);
+            td5.appendChild(p5);
+            td6.appendChild(p6);
         
-        resultado.appendChild(p);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+        
+        tbody.appendChild(tr);
     });
+
+    // array.forEach(element => {
+    //     const p = document.createElement('p');
+    //     p.innerHTML += `Aluno: ${element.nome}; `;
+    //     p.innerHTML += `${element.idade} anos; `;
+    //     p.innerHTML += `do sexo ${element.sexo}; `;
+    //     p.innerHTML += `RA: ${element.ra}`;
+        
+    //     resultado.appendChild(p);
+    // });
 
 
   
