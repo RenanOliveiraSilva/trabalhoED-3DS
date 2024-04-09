@@ -160,18 +160,11 @@ function ordenaRAdecrescente(a,b) {
     return a.ra < b.ra
 }
 
-//4 - Função que retorna uma lista de alunos aprovados por ordem crescente de nomes
-function ordenaAprovados(array) {
-    let alunosAp = selecionaAlunosAp(array);
-    
-    //Retornando o valor
-    return ordenaNome(alunosAp);
-    
-}
+ 
 
 //4.1 - Função que seleciona os alunos aprovados
 function selecionaAlunosAp(obj) {
-    let alunosAp = [];
+    
 
     for(let i = 0; i < obj.length; i++) {
 
@@ -181,6 +174,7 @@ function selecionaAlunosAp(obj) {
         }
 
     }
+
 
     return alunosAp;
 
@@ -268,4 +262,4 @@ function mostraResposta(array, nomeFunc) {
         tbody.appendChild(tr);
     });
   
-  }
+}
