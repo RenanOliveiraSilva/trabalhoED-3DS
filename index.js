@@ -75,7 +75,7 @@ function cadastraUser() {
         qtd ++;
 
     //Encerrando a função
-    return
+    return;
 }
 
 //2 - Retornando a lista de alunos por nome crescente
@@ -84,7 +84,7 @@ function ordenaNome(array){
     if (!array) {
         alert("Nenhum aluno cadastrado !!!");
         
-        return
+        return;
     }
 
     //Ordenando os nomes em ordem crecente
@@ -116,7 +116,8 @@ function ordenaNome(array){
 
 //2.1 - Função de comparação de nomes
 function ordenaNomes(a,b) {
-    return a.nome > b.nome
+    return a.nome > b.nome;
+
 }
 
 //3 - Fynção que retorna lista ordenada por RA decrescente
@@ -125,7 +126,7 @@ function ordenaRA(array){
     if (!array) {
         alert("Nenhum aluno cadastrado !!!");
         
-        return
+        return;
     }
 
     //Ordenando os alunos pelo RA em ordem decrescente
@@ -162,34 +163,11 @@ function ordenaRAdecrescente(a,b) {
 //4 - Função que retorna uma lista de alunos aprovados por ordem crescente de nomes
 function ordenaAprovados(array) {
     let alunosAp = selecionaAlunosAp(array);
-
-        //Ordenando os nomes em ordem crecente
-        function bubbleSort(vetor, fnComp) {
-            let trocou;
-            
-            do {
-               
-                trocou = false;
-            
-                for (let i = 0; i < vetor.length - 1; i++) {
-                    
-                    if (fnComp(vetor[i], vetor[i + 1])) {
-                        [vetor[i], vetor[i + 1]] = [vetor[i + 1], vetor[i]];
-                        trocou = true;
-                        
-                    }
-                }
     
-            } while (trocou);
-    
-            return vetor;
-        }
-    
-        //Retornando o valor
-        return bubbleSort(alunosAp, ordenaNomes);
+    //Retornando o valor
+    return ordenaNome(alunosAp);
     
 }
-
 
 //4.1 - Função que seleciona os alunos aprovados
 function selecionaAlunosAp(obj) {
@@ -267,9 +245,7 @@ function mostraResposta(array, nomeFunc) {
             //Colando o texto na coluna
             p.innerText = obj[column]
             td.appendChild(p);
-            tr.appendChild(td);
-
-            
+            tr.appendChild(td);     
             
             if(i == 5) {
                 if (obj.resultado == 1) {
@@ -282,13 +258,11 @@ function mostraResposta(array, nomeFunc) {
                     td.appendChild(p);
                     tr.appendChild(td);
                 }
-               
 
             }
 
             i++;
         }
-
         
         //Adicionando a linha no arquivo HTML
         tbody.appendChild(tr);
