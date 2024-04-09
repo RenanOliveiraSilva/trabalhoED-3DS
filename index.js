@@ -211,48 +211,86 @@ function selecionaAlunosAp(obj) {
 //Função de mostrar os resultados
 function mostraResposta(array, nomeFunc) {
     
+    //Selecionando campos do arquivo HTML
     const tbody = document.querySelector('#text');  
-    tbody.innerHTML = "";
     const tr = document.querySelector('#tittle');
-    tr.innerHTML = "";
     const trName = document.querySelector('#name');
+
+    //Zerando os valores
+    tbody.innerHTML = "";
+    tr.innerHTML = "";
     trName.innerHTML = "";
 
+    //Criando uma coluna para o nome da Tabela
     const th = document.createElement('th');
+    //Zerando esse campo
     th.innerHTML = "";
+    //Adicionando um colspan nessa linha
     th.setAttribute('colspan', 6);
 
+    //Setando o valor do nome da tabela
     const p = document.createElement('p');
     p.innerHTML = "";
     p.innerHTML = nomeFunc;
 
+    //Adicionando o nome da tabela no arquivo HTML
     th.appendChild(p);
     trName.appendChild(th);
 
-    let teste = array[0];
+    //Adicionado os cabeçalhos da tabela
+    let title = array[0];
     
-    for (const column in teste) {
+    for (const column in title) {
+            //Criando os elementos
             const th = document.createElement('th');
             const p = document.createElement('p');
+
+            //Adicionando o texto
             p.innerText = column;
             th.appendChild(p);
-
             tr.appendChild(th);
-        }
+    }
 
+    //Listando os elementos dos objetos na tabela
+    //Percorrendo o array de objetos
     array.forEach(obj => {
-
+        //Criando uma linha nova
         const tr = document.createElement('tr');
-        
+        let i = 0;
+
+        //Correndo os elementos do objetos
         for (const column in obj) {
+            //Criando uma coluna
             const td = document.createElement('td');
             const p = document.createElement('p');
+
+            //Colando o texto na coluna
             p.innerText = obj[column]
             td.appendChild(p);
             tr.appendChild(td);
 
+            
+            
+            if(i == 5) {
+                if (obj.resultado == 1) {
+                    p.innerText = "Aprovado"
+                    td.appendChild(p);
+                    tr.appendChild(td);
+
+                } else {
+                    p.innerText = "Reprovado"
+                    td.appendChild(p);
+                    tr.appendChild(td);
+                }
+               
+
+            }
+
+            i++;
         }
+
         
+        //Adicionando a linha no arquivo HTML
         tbody.appendChild(tr);
     });
   
